@@ -28,6 +28,35 @@ body {
     background: gray;
     text-align: center;
     /*overflow-y: hidden;*/
+    user-select: none;
+}
+
+div.vlevo>span,
+div.vpravo>span{
+    font-size: xx-large;
+    color: white;
+    font-weight: bold;
+    font-size: 250%;
+    position: relative;
+    top: 40%;
+    user-select: none;
+}
+
+@keyframes vlevo-vpravo-hover {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+div.vlevo:hover,
+div.vpravo:hover{
+    background-color: black;
+    opacity: 0.3;
+    text-align: center;
+    animation: vlevo-vpravo-hover 1s linear;
 }
 
 img {
@@ -36,7 +65,7 @@ img {
 }
 
 img ~ div.vlevo{
-    width: 50%;
+    width: 40%;
     height: 100%;
     /*background-color: green;*/
     position: absolute;
@@ -48,7 +77,7 @@ img ~ div.vlevo{
 }
 
 img ~ div.vpravo {
-    width: 50%;
+    width: 40%;
     height: 100%;
     /*background-color: blue;*/
     position: absolute;
@@ -167,7 +196,8 @@ function settings(){
 function change(in_currentItem){
     currentItem = in_currentItem;
     iconurl=urls[currentItem];
-    $("#img_loadmyslider").removeAttr("src").attr("src", iconurl);
+    //$("#img_loadmyslider").removeAttr("src").attr("src", iconurl);
+    img_loadmyslider.setAttribute("src", iconurl);
 }
 
 </script>
@@ -177,9 +207,9 @@ function change(in_currentItem){
 <body>
 
    <img id="img_loadmyslider" src="https://azbyka.ru/days/storage/images/icons-of-saints/1753/p18vtmilefc58k5gs2019h01sbc4.jpg"/>
-   <div class="vlevo" onclick="vlevoClick();"></div>
+   <div class="vlevo" onclick="vlevoClick();"><span><</span></div>
    <div class="center" onclick="centerClick();"></div>
-   <div class="vpravo" onclick="vpravoClick();"></div>
+   <div class="vpravo" onclick="vpravoClick();"><span>></span></div>
 
 <style>
 
